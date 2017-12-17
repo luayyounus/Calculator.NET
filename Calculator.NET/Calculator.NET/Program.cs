@@ -35,8 +35,54 @@ namespace Calculator.NET
             if (userInput.ToLower() == "exit")
                 return false;
 
-            //Calculate the user input
+            Calculate(userInput);
             return true;
+        }
+
+        public static void Calculate(string input)
+        {
+            char[] operations = new char[] {'+', '-'};
+            int[] numbersToBeCalculated = new int[]{2,4,1} ;
+
+            if (operations.Length >= numbersToBeCalculated.Length)
+            {
+                Console.WriteLine("Wrong entry. Calculate again using one or more operations");
+                Calculate(Console.ReadLine());
+            }
+
+            int result = numbersToBeCalculated[0];
+            int j = 0;
+            for (var i = 1; i < numbersToBeCalculated.Length; i++)
+            {
+                switch (operations[j])
+                {
+                    case '+':
+                    {
+                        result += numbersToBeCalculated[i];
+                        break;
+                    }
+                    case '-':
+                    {
+                        result -= numbersToBeCalculated[i];
+                        break;
+                    }
+                    case '*':
+                    {
+                        result *= numbersToBeCalculated[i];
+                        break;
+                    }
+                    case '/':
+                    {
+                        result /= numbersToBeCalculated[i];
+                        break;
+                    }
+                    default:
+                        break;
+                }
+                j++;
+            }
+            Console.WriteLine("Result: {0}", result);
+            Console.WriteLine("\nType 'Exit' to leave :( Or try another calculation :)\n");
         }
 
         public static void ExitAndThankYouMessage()
