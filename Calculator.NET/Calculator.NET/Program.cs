@@ -41,8 +41,12 @@ namespace Calculator.NET
 
         public static void Calculate(string input)
         {
-            char[] operations = new char[] {'+', '-'};
-            int[] numbersToBeCalculated = new int[]{2,4,1} ;
+
+            var numArray = Regex.Matches(input, "[0-9]+").Cast<Match>().Select(m => m.Value).ToArray();
+            var opArray = Regex.Matches(input, @"[+-\/*]").Cast<Match>().Select(m => m.Value).ToArray();
+
+            int[] numbersToBeCalculated = Array.ConvertAll(numArray, int.Parse);
+            char[] operations = Array.ConvertAll(opArray, char.Parse);
 
             if (operations.Length >= numbersToBeCalculated.Length)
             {
@@ -50,32 +54,32 @@ namespace Calculator.NET
                 Calculate(Console.ReadLine());
             }
 
-            int result = numbersToBeCalculated[0];
+            double result = numbersToBeCalculated[0];
             int j = 0;
             for (var i = 1; i < numbersToBeCalculated.Length; i++)
             {
                 switch (operations[j])
                 {
                     case '+':
-                    {
-                        result += numbersToBeCalculated[i];
-                        break;
-                    }
+                        {
+                            result += numbersToBeCalculated[i];
+                            break;
+                        }
                     case '-':
-                    {
-                        result -= numbersToBeCalculated[i];
-                        break;
-                    }
+                        {
+                            result -= numbersToBeCalculated[i];
+                            break;
+                        }
                     case '*':
-                    {
-                        result *= numbersToBeCalculated[i];
-                        break;
-                    }
+                        {
+                            result *= numbersToBeCalculated[i];
+                            break;
+                        }
                     case '/':
-                    {
-                        result /= numbersToBeCalculated[i];
-                        break;
-                    }
+                        {
+                            result /= numbersToBeCalculated[i];
+                            break;
+                        }
                     default:
                         break;
                 }
