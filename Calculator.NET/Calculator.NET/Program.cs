@@ -19,6 +19,31 @@ namespace Calculator.NET
                 "\n\n\n");
         }
 
+        public static void ExitAndThankYouMessage()
+        {
+            Console.Clear();
+            Console.WriteLine("\n\n\n\n");
+            Console.WriteLine(@"
+                         _____  _   _  _____  _   _  _   _     _     _  _____  _   _ 
+                        (_   _)( ) ( )(  _  )( ) ( )( ) ( )   ( )   ( )(  _  )( ) ( )
+                          | |  | |_| || (_) || `\| || |/'/'   `\`\_/'/'| ( ) || | | |
+                          | |  |  _  ||  _  || , ` || , <       `\ /'  | | | || | | |
+                          | |  | | | || | | || |`\ || |\`\       | |   | (_) || (_) |
+                          (_)  (_) (_)(_) (_)(_) (_)(_) (_)      (_)   (_____)(_____)
+
+
+
+
+                                    |\
+                            /    /\/o\_
+                           (.-.__.(   __o
+                        /\_(      .----'
+                         .' \____/
+                        /   /  / \
+                    ___:____\__\__\__________________________________________________________");
+            Thread.Sleep(4000);
+        }
+
         static void Main(string[] args)
         {
             WelcomeMessage();
@@ -31,7 +56,7 @@ namespace Calculator.NET
                 //Make calculation
             }
 
-            //Exit message
+            ExitAndThankYouMessage();
         }
 
     }
