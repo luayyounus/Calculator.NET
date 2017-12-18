@@ -6,9 +6,22 @@ namespace Calculator.NET
 {
     class Program
     {
+        private static void WelcomeMessage()
+        {
+            Console.WriteLine(
+                "\n\n  --------------------------- Welcome to Calculator.NET! --------------------------" +
+                "\n\n Enter any calculation you would like to perform using any of the four operators" +
+                "\n\n\n\t\t\t\t `+` `-` `*` `/`                                      " +
+                "\n" +
+                "\n\tExamples: 45 + 16" +
+                "\n\t          65 * 4 / 531" +
+                "\n\t          49 - 2 + 134 * 648" +
+                "\n\n\n");
+        }
+
         static void Main(string[] args)
         {
-            //Welcome Message
+            WelcomeMessage();
 
             Console.WriteLine("-> Calculate ");
 
