@@ -1,4 +1,4 @@
-# Calculator
+# Calculator.NET
 Calculator console application written with C#
 
 ##### To execute the application you need to follow the steps:-
