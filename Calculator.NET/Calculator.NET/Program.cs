@@ -21,6 +21,7 @@ namespace Calculator.NET
                 "\n\n");
         }
 
+        //Method invoked as long as the user is running the calculator
         private static bool CalculatorOn()
         {
             var userInput = Console.ReadLine();
@@ -41,21 +42,24 @@ namespace Calculator.NET
 
         public static void Calculate(string input)
         {
-
+            //Getting numbers and math math operators using Regex
             var numArray = Regex.Matches(input, "[0-9]+").Cast<Match>().Select(m => m.Value).ToArray();
             var opArray = Regex.Matches(input, @"[+-\/*]").Cast<Match>().Select(m => m.Value).ToArray();
 
+            //Casting Arrays to the correct data type
             int[] numbersToBeCalculated = Array.ConvertAll(numArray, int.Parse);
             char[] operations = Array.ConvertAll(opArray, char.Parse);
 
+            //Checking if math operators are equal or more than the numbers to be calculated
             if (operations.Length >= numbersToBeCalculated.Length)
             {
-                Console.WriteLine("Wrong entry. Calculate again using one or more operations");
+                Console.WriteLine("Wrong entry. Try again using one or more operations");
                 Calculate(Console.ReadLine());
             }
 
             double result = numbersToBeCalculated[0];
-            int j = 0;
+
+            var j = 0;
             for (var i = 1; i < numbersToBeCalculated.Length; i++)
             {
                 switch (operations[j])
@@ -111,10 +115,12 @@ namespace Calculator.NET
                          .' \____/
                         /   /  / \
                     ___:____\__\__\__________________________________________________________");
+            
+            //Delay before exiting the app
             Thread.Sleep(4000);
         }
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             WelcomeMessage();
 
